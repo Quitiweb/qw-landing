@@ -15,12 +15,13 @@ const Blog = () => {
       const defaultPosts = [
         {
           id: 1,
-          title: 'Arquitectura de Microservicios: Guía Completa',
-          excerpt: 'Descubre cómo implementar una arquitectura de microservicios escalable y mantenible.',
-          date: '2024-01-15',
+          title: 'El Bucle de la Enshittification',
+          excerpt: 'Por qué tus plataformas favoritas (Facebook, Google, Amazon...) parecen empeorar día tras día.',
+          date: '2025-11-08',
           readTime: '8 min',
-          category: 'Arquitectura',
-          image: 'Microservices architecture diagram with interconnected services and APIs',
+          category: 'Capitalismo',
+          image: 'public/thumbnail.kk.quitiweb.com.png',
+          url: 'https://kk.quitiweb.com/',
         },
         {
           id: 2,
@@ -46,11 +47,15 @@ const Blog = () => {
     }
   }, []);
 
-  const handleReadMore = () => {
-    toast({
-      title: "🚧 Esta función aún no está implementada",
-      description: "¡Pero no te preocupes! Puedes solicitarla en tu próximo mensaje 🚀",
-    });
+  const handleReadMore = (post) => {
+    if (post.url) {
+      window.open(post.url, '_blank', 'noopener,noreferrer');
+    } else {
+      toast({
+        title: "🚧 Esta función aún no está implementada",
+        description: "¡Pero no te preocupes! Puedes solicitarla en tu próximo mensaje 🚀",
+      });
+    }
   };
 
   return (
@@ -80,6 +85,7 @@ const Blog = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="glass-effect rounded-2xl overflow-hidden hover:bg-white/10 transition-all group cursor-pointer"
+              onClick={() => post.url && handleReadMore(post)}
             >
               <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-purple-900/50 to-pink-900/50">
                 <img
@@ -111,7 +117,7 @@ const Blog = () => {
                 </p>
                 <Button
                   variant="ghost"
-                  onClick={handleReadMore}
+                  onClick={() => handleReadMore(post)}
                   className="text-purple-400 hover:text-purple-300 p-0 h-auto font-semibold group/btn"
                 >
                   Leer más
