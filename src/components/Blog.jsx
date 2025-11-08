@@ -15,11 +15,11 @@ const Blog = () => {
       const defaultPosts = [
         {
           id: 1,
-          title: 'Arquitectura de Microservicios: Guía Completa',
-          excerpt: 'Descubre cómo implementar una arquitectura de microservicios escalable y mantenible.',
-          date: '2024-01-15',
+          title: 'El Bucle de la Enshittification',
+          excerpt: 'Por qué tus plataformas favoritas (Facebook, Google, Amazon...) parecen empeorar día tras día.',
+          date: '2025-11-08',
           readTime: '8 min',
-          category: 'Arquitectura',
+          category: 'Capitalismo',
           image: 'Microservices architecture diagram with interconnected services and APIs',
           url: 'https://kk.quitiweb.com/',
         },
