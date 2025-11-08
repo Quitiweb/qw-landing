@@ -20,7 +20,7 @@ const Blog = () => {
           date: '2025-11-08',
           readTime: '8 min',
           category: 'Capitalismo',
-          image: 'Microservices architecture diagram with interconnected services and APIs',
+          image: 'public/thumbnail.kk.quitiweb.com.png',
           url: 'https://kk.quitiweb.com/',
         },
         {
