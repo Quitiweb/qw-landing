@@ -20,7 +20,7 @@ const Blog = () => {
           date: '2025-11-08',
           readTime: '8 min',
           category: 'Capitalismo',
-          image: 'Gráfica del proceso de Enshittification en 3 fases',
+          image: '/thumbnail.kk.quitiweb.com.png',
           url: 'https://kk.quitiweb.com/',
         },
         {
@@ -30,7 +30,7 @@ const Blog = () => {
           date: '2024-01-10',
           readTime: '6 min',
           category: 'Bases de Datos',
-          image: 'Database optimization dashboard with performance metrics and query analysis',
+          image: 'https://images.unsplash.com/photo-1595872018818-97555653a011',
         },
         {
           id: 3,
@@ -39,7 +39,7 @@ const Blog = () => {
           date: '2024-01-05',
           readTime: '10 min',
           category: 'Seguridad',
-          image: 'Cloud security concept with encryption shields and secure connections',
+          image: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb',
         },
       ];
       localStorage.setItem('blogPosts', JSON.stringify(defaultPosts));
@@ -91,7 +91,7 @@ const Blog = () => {
                 <img
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   alt={post.title}
-                 src="https://images.unsplash.com/photo-1595872018818-97555653a011" />
+                  src={post.image} />
                 <div className="absolute top-4 left-4">
                   <span className="px-3 py-1 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-xs font-semibold">
                     {post.category}
