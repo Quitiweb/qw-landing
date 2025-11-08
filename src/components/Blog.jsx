@@ -20,7 +20,7 @@ const Blog = () => {
           date: '2025-11-08',
           readTime: '8 min',
           category: 'Capitalismo',
-          image: 'public/thumbnail.kk.quitiweb.com.png',
+          image: 'Gráfica del proceso de Enshittification en 3 fases',
           url: 'https://kk.quitiweb.com/',
         },
         {
