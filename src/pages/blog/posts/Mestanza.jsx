@@ -1,23 +1,82 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import BlogLayout from '@/components/BlogLayout';
 
+const heroStats = [
+  {
+    label: 'Inversión oficial',
+    value: '106 M€',
+    detail: 'Presupuesto estimado por la Junta de Andalucía.'
+  },
+  {
+    label: 'Alternativa ciudadana',
+    value: '40 M€',
+    detail: 'Coste de propuestas alternativas impulsadas por la plataforma vecinal.'
+  },
+  {
+    label: 'Población afectada',
+    value: '1 M+',
+    detail: 'Habitantes que podrían verse influidos por la ubicación de la EDAR.'
+  }
+];
+
+const conflictBlocks = [
+  {
+    icon: '💧',
+    title: 'La postura oficial',
+    description:
+      'La Junta defiende la EDAR Málaga Norte como infraestructura urgente para cumplir con las directivas europeas y frenar sanciones millonarias por vertidos.'
+  },
+  {
+    icon: '🌳',
+    title: 'La voz ciudadana',
+    description:
+      'La plataforma “Salvemos la Vega de Mestanza” denuncia el impacto sobre el último valle fértil de Málaga y reclama alternativas menos invasivas.'
+  }
+];
+
+const impactHighlights = [
+  {
+    title: 'Riesgo de inundación',
+    accent: 'from-cyan-500/30 to-blue-500/30',
+    badge: 'Hidrología',
+    bullets: [
+      'La vega funciona como esponja natural ante las crecidas del Guadalhorce.',
+      'Una plataforma de hormigón de 4 metros alteraría el flujo y empujaría el agua hacia 9 núcleos de población.'
+    ]
+  },
+  {
+    title: 'Ecocidio en cifras',
+    accent: 'from-emerald-500/30 to-lime-500/30',
+    badge: 'Medio ambiente',
+    bullets: [
+      '22.000 árboles frutales desaparecerían junto al mosaico agrícola histórico.',
+      'Más de 300 familias verían comprometido su sustento directo.',
+      'Se perdería la última vega viva próxima a la capital malagueña.'
+    ]
+  }
+];
+
 function Mestanza() {
-  const [activeTab, setActiveTab] = useState('costo');
+  const [activeTab, setActiveTab] = useState('cost');
   const [population, setPopulation] = useState(735000);
-  const [capacityChart, setCapacityChart] = useState(null);
+  const [isChartReady, setIsChartReady] = useState(false);
+  const chartsRef = useRef({ cost: null, capacity: null });
 
   useEffect(() => {
-    // Cargar Chart.js
+    if (window.Chart) {
+      setIsChartReady(true);
+      return () => destroyCharts();
+    }
+
     const script = document.createElement('script');
     script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
     script.async = true;
-    script.onload = () => {
-      initCharts();
-    };
+    script.onload = () => setIsChartReady(true);
     document.body.appendChild(script);
 
     return () => {
+      destroyCharts();
       if (document.body.contains(script)) {
         document.body.removeChild(script);
       }
@@ -25,347 +84,377 @@ function Mestanza() {
   }, []);
 
   useEffect(() => {
-    if (capacityChart && window.Chart) {
-      updateCapacityChart(population);
-    }
-  }, [population, capacityChart]);
+    if (!isChartReady) return;
+    initCharts(activeTab);
 
-  const initCharts = () => {
-    if (!window.Chart) return;
-
-    // Cost Chart
-    const costCtx = document.getElementById('costChart')?.getContext('2d');
-    if (costCtx) {
-      new window.Chart(costCtx, {
-        type: 'bar',
-        data: {
-          labels: ['Alternativa (Ciudadanos)', 'Proyecto Oficial (Junta)', 'Coste Total (Ciudadanos)'],
-          datasets: [{
-            label: 'Coste en Millones de €',
-            data: [40, 106, 131],
-            backgroundColor: [
-              'rgba(94, 140, 97, 0.7)',
-              'rgba(255, 159, 64, 0.7)',
-              'rgba(201, 75, 75, 0.7)'
-            ],
-            borderColor: [
-              '#5E8C61',
-              '#FF9F40',
-              '#C94B4B'
-            ],
-            borderWidth: 2
-          }]
-        },
-        options: {
-          indexAxis: 'y',
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              display: false
-            },
-            tooltip: {
-              callbacks: {
-                label: function(context) {
-                  return ` ${context.raw} Millones de €`;
-                }
-              }
-            }
-          },
-          scales: {
-            x: {
-              beginAtZero: true,
-              title: {
-                display: true,
-                text: 'Millones de Euros (€)'
-              }
-            }
-          }
-        }
-      });
-    }
-
-    // Capacity Chart
-    const capacityCtx = document.getElementById('capacityChart')?.getContext('2d');
-    if (capacityCtx) {
-      const chart = new window.Chart(capacityCtx, {
-        type: 'doughnut',
-        data: getCapacityData(population),
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              position: 'top',
-            },
-            tooltip: {
-              callbacks: {
-                label: function(context) {
-                  let label = context.label || '';
-                  if (label) {
-                    label += ': ';
-                  }
-                  if (context.parsed !== null) {
-                    label += new Intl.NumberFormat('es-ES').format(context.parsed);
-                  }
-                  return label;
-                }
-              }
-            }
-          }
-        }
-      });
-      setCapacityChart(chart);
-    }
-  };
-
-  const getCapacityData = (pop) => {
-    const maxPopulation = 1000000;
-    return {
-      labels: ['Población a Servir', 'Capacidad Restante (s/ 1M)'],
-      datasets: [{
-        data: [pop, maxPopulation - pop],
-        backgroundColor: ['#5E8C61', '#EAE7E1'],
-        hoverOffset: 4
-      }]
+    return () => {
+      destroyCharts();
     };
-  };
+  }, [isChartReady, activeTab]);
 
-  const updateCapacityChart = (pop) => {
+  useEffect(() => {
+    if (!isChartReady) return;
+    const capacityChart = chartsRef.current.capacity;
     if (capacityChart) {
-      capacityChart.data = getCapacityData(pop);
+      const capacityData = getCapacityData(population);
+      capacityChart.data.datasets[0].data = capacityData.datasets[0].data;
       capacityChart.update();
     }
+  }, [population, isChartReady]);
+
+  const destroyCharts = () => {
+    Object.values(chartsRef.current).forEach((chart) => {
+      chart?.destroy();
+    });
+    chartsRef.current = { cost: null, capacity: null };
+  };
+
+  const initCharts = (tab) => {
+    const Chart = window.Chart;
+    if (!Chart) return;
+
+    if (tab === 'cost') {
+      const ctx = document.getElementById('mestanzaCostChart')?.getContext('2d');
+      if (ctx) {
+        chartsRef.current.cost?.destroy();
+
+        const gradientCitizen = ctx.createLinearGradient(0, 0, 0, 320);
+        gradientCitizen.addColorStop(0, 'rgba(192, 132, 252, 0.8)');
+        gradientCitizen.addColorStop(1, 'rgba(192, 132, 252, 0.1)');
+
+        const gradientJunta = ctx.createLinearGradient(0, 0, 0, 320);
+        gradientJunta.addColorStop(0, 'rgba(244, 114, 182, 0.8)');
+        gradientJunta.addColorStop(1, 'rgba(244, 114, 182, 0.1)');
+
+        const gradientTotal = ctx.createLinearGradient(0, 0, 0, 320);
+        gradientTotal.addColorStop(0, 'rgba(34, 211, 238, 0.8)');
+        gradientTotal.addColorStop(1, 'rgba(34, 211, 238, 0.1)');
+
+        chartsRef.current.cost = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: [
+              'Alternativa ciudadana',
+              'Proyecto oficial',
+              'Coste total asumido'
+            ],
+            datasets: [
+              {
+                label: 'Millones de euros',
+                data: [40, 106, 131],
+                backgroundColor: [gradientCitizen, gradientJunta, gradientTotal],
+                borderColor: ['#C084FC', '#F472B6', '#22D3EE'],
+                borderWidth: 2,
+                borderRadius: 16,
+                barThickness: 28
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            indexAxis: 'y',
+            layout: {
+              padding: 12
+            },
+            plugins: {
+              legend: {
+                display: false
+              },
+              tooltip: {
+                backgroundColor: 'rgba(7, 13, 31, 0.85)',
+                titleColor: '#FFFFFF',
+                bodyColor: '#E2E8F0',
+                borderColor: 'rgba(192, 132, 252, 0.4)',
+                borderWidth: 1,
+                callbacks: {
+                  label: (context) => ` ${context.formattedValue} M€`
+                }
+              }
+            },
+            scales: {
+              x: {
+                grid: {
+                  color: 'rgba(148, 163, 184, 0.15)'
+                },
+                ticks: {
+                  color: 'rgba(226, 232, 240, 0.9)',
+                  callback: (value) => `${value} M€`
+                }
+              },
+              y: {
+                grid: {
+                  display: false
+                },
+                ticks: {
+                  color: '#E2E8F0',
+                  font: {
+                    weight: '600'
+                  }
+                }
+              }
+            }
+          }
+        });
+      }
+    }
+
+    if (tab === 'capacity') {
+      const ctx = document.getElementById('mestanzaCapacityChart')?.getContext('2d');
+      if (ctx) {
+        chartsRef.current.capacity?.destroy();
+        chartsRef.current.capacity = new Chart(ctx, {
+          type: 'doughnut',
+          data: getCapacityData(population),
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '65%',
+            plugins: {
+              legend: {
+                position: 'bottom',
+                labels: {
+                  color: '#E2E8F0',
+                  boxWidth: 14,
+                  boxHeight: 14,
+                  padding: 18
+                }
+              },
+              tooltip: {
+                backgroundColor: 'rgba(7, 13, 31, 0.85)',
+                titleColor: '#FFFFFF',
+                bodyColor: '#E2E8F0',
+                callbacks: {
+                  label: (context) => {
+                    const value = context.parsed;
+                    return `${context.label}: ${new Intl.NumberFormat('es-ES').format(value)}`;
+                  }
+                }
+              }
+            }
+          }
+        });
+      }
+    }
+  };
+
+  const getCapacityData = (value) => {
+    const max = 1_000_000;
+    const remaining = Math.max(max - value, 0);
+    return {
+      labels: ['Población cubierta', 'Capacidad restante s/ 1M'],
+      datasets: [
+        {
+          data: [value, remaining],
+          backgroundColor: ['rgba(192, 132, 252, 0.85)', 'rgba(148, 163, 184, 0.3)'],
+          borderColor: ['#C084FC', '#94A3B8'],
+          borderWidth: 1.5,
+          hoverOffset: 6
+        }
+      ]
+    };
   };
 
   return (
     <BlogLayout>
       <Helmet>
-        <html lang="es" className="scroll-smooth" />
-        <title>Análisis Interactivo: Conflicto EDAR Vega Mestanza | Quitiweb</title>
+        <html lang="es" />
+        <title>Vega Mestanza: El corazón de un conflicto | Quitiweb</title>
         <link rel="canonical" href="https://quitiweb.com/blog/mestanza" />
         <meta
           name="description"
-          content="Progreso contra Patrimonio. La lucha por la última vega fértil de Málaga frente a una infraestructura declarada de urgencia."
+          content="Radiografía interactiva del proyecto EDAR Málaga Norte y su impacto sobre la Vega de Mestanza: costes, capacidad real y consecuencias medioambientales."
         />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
       </Helmet>
 
-      <style>{`\n        .bg-custom-main { background-color: #FDFBF7; }\n        .bg-custom-secondary { background-color: #F8F5F0; }\n        .text-custom-accent-green { color: #5E8C61; }\n        .bg-custom-accent-green { background-color: #5E8C61; }\n        .border-custom-accent-green { border-color: #5E8C61; }\n        .text-custom-accent-terracotta { color: #A98C6D; }\n        .bg-custom-accent-terracotta { background-color: #A98C6D; }\n        .border-custom-accent-terracotta { border-color: #A98C6D; }\n        .tab-btn.active {\n          border-color: #5E8C61;\n          background-color: #5E8C61;\n          color: white;\n        }\n        .chart-container {\n          position: relative;\n          height: 350px;\n          width: 100%;\n          max-width: 500px;\n          margin: auto;\n        }\n      `}</style>
+      <article className="relative mx-auto max-w-5xl px-5 pb-20 text-white sm:px-8">
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-purple-900/40 via-transparent to-black/10" />
 
-      <article className="bg-custom-main text-gray-800">
+        <section className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-purple-600/30 via-slate-900/30 to-indigo-900/40 px-6 py-16 text-center shadow-xl sm:px-10">
+          <div className="absolute inset-0 -z-10 opacity-60">
+            <div className="absolute -left-10 top-10 h-40 w-40 rounded-full bg-purple-500/40 blur-3xl" />
+            <div className="absolute bottom-4 right-6 h-52 w-52 rounded-full bg-cyan-400/30 blur-3xl" />
+          </div>
 
-        {/* Hero Section */}
-        <section className="text-center py-16 md:py-24 px-4">
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">
-            <span className="block">Vega Mestanza: El Corazón de un Conflicto</span>
-          </h1>
-          <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-gray-500">
-            Progreso contra Patrimonio. La lucha por la última vega fértil de Málaga frente a una infraestructura declarada de urgencia.
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-purple-200/80">
+            Análisis Especial
           </p>
-          <div className="mt-8">
-            <a href="#conflicto" className="inline-block bg-custom-accent-green text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-green-700 transition duration-300">
-              Explorar el Análisis
-            </a>
-          </div>
+          <h1 className="mt-6 text-4xl font-extrabold leading-tight md:text-5xl">
+            Vega Mestanza: el corazón de un conflicto entre progreso y patrimonio
+          </h1>
+          <p className="mx-auto mt-5 max-w-2xl text-lg text-slate-200/90">
+            Mientras la administración busca cumplir a contrarreloj con las exigencias europeas, la ciudadanía defiende el último valle fértil de Málaga. ¿Qué hay realmente en juego?
+          </p>
+
+          <dl className="mt-12 grid gap-6 text-left sm:grid-cols-3">
+            {heroStats.map((stat) => (
+              <div key={stat.label} className="glass-effect rounded-2xl border border-white/10 p-5">
+                <dt className="text-xs uppercase tracking-widest text-purple-200/80">{stat.label}</dt>
+                <dd className="mt-2 text-2xl font-bold text-white">{stat.value}</dd>
+                <p className="mt-2 text-sm text-slate-300">{stat.detail}</p>
+              </div>
+            ))}
+          </dl>
         </section>
 
-        {/* Section 1: El Conflicto */}
-        <section id="conflicto" className="py-16 bg-custom-secondary rounded-xl px-4 sm:px-6 lg:px-8 mb-8">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold">Dos Visiones Enfrentadas</h2>
-            <p className="mt-2 text-gray-600">
-              El proyecto de la EDAR Málaga Norte enfrenta la necesidad de cumplir con la normativa medioambiental europea contra la defensa de un espacio de alto valor ecológico y agrícola.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="bg-white p-8 rounded-lg shadow-md border-t-4 border-custom-accent-green">
-              <div className="flex items-center mb-4">
-                <span className="text-3xl">💧</span>
-                <h3 className="text-2xl font-bold ml-4">La Postura Oficial: Una Necesidad Urgente</h3>
+        <section className="mt-16 grid gap-8 md:grid-cols-2">
+          {conflictBlocks.map((block) => (
+            <div
+              key={block.title}
+              className="glass-effect h-full rounded-3xl border border-white/10 p-8 shadow-lg transition-colors hover:border-purple-400/40"
+            >
+              <div className="flex items-center gap-4 text-purple-200">
+                <span className="text-4xl" aria-hidden>{block.icon}</span>
+                <h2 className="text-2xl font-semibold text-white">{block.title}</h2>
               </div>
-              <p className="text-gray-700">
-                La Junta de Andalucía defiende la EDAR como una obra "imprescindible" para acabar con los vertidos contaminantes al río Guadalhorce, evitar multas millonarias de la UE y cumplir con las directivas europeas de aguas residuales.
-              </p>
+              <p className="mt-4 text-base text-slate-200/90">{block.description}</p>
             </div>
-            <div className="bg-white p-8 rounded-lg shadow-md border-t-4 border-custom-accent-terracotta">
-              <div className="flex items-center mb-4">
-                <span className="text-3xl">🌳</span>
-                <h3 className="text-2xl font-bold ml-4">La Queja Ciudadana: Salvar la Vega</h3>
-              </div>
-              <p className="text-gray-700">
-                La plataforma "Salvemos la Vega de Mestanza" se opone a la ubicación por considerarla un "ecocidio". Denuncian el impacto devastador en la "última vega fértil viva" de Málaga, el riesgo de inundaciones y proponen alternativas más sostenibles y económicas.
-              </p>
-            </div>
-          </div>
+          ))}
         </section>
 
-        {/* Section 2: Argumentos a Examen */}
-        <section id="argumentos" className="py-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold">Argumentos a Examen</h2>
-            <p className="mt-2 text-gray-600">
-              Analizamos los puntos clave de la discordia: la capacidad real del proyecto y su coste económico. Interactúa con los datos para entender las diferencias entre ambas posturas.
-            </p>
+        <section className="mt-20">
+          <div className="flex flex-col gap-4 text-center md:flex-row md:items-end md:justify-between md:text-left">
+            <div>
+              <h2 className="text-3xl font-bold md:text-4xl">Argumentos enfrentados bajo la lupa</h2>
+              <p className="mt-3 max-w-xl text-slate-300">
+                Compara los números oficiales con los de la ciudadanía y experimenta con la capacidad real del proyecto según la población a la que debería dar servicio.
+              </p>
+            </div>
+            <div className="inline-flex self-center rounded-full border border-purple-400/40 bg-purple-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-purple-200">
+              Datos interactivos
+            </div>
           </div>
 
-          <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg max-w-4xl mx-auto">
-            <div className="mb-6 border-b border-gray-200">
-              <nav className="flex space-x-2 sm:space-x-4" aria-label="Tabs">
-                <button
-                  className={`tab-btn font-medium py-3 px-4 rounded-t-lg border-b-2 ${activeTab === 'costo' ? 'active' : ''}`}
-                  onClick={() => setActiveTab('costo')}
-                >
-                  💰 El Coste Real
-                </button>
-                <button
-                  className={`tab-btn font-medium py-3 px-4 rounded-t-lg border-b-2 ${activeTab === 'capacidad' ? 'active' : ''}`}
-                  onClick={() => setActiveTab('capacidad')}
-                >
-                  👥 Dimensión y Capacidad
-                </button>
-              </nav>
+          <div className="mt-10 rounded-3xl border border-white/5 bg-white/[0.04] p-2 shadow-inner">
+            <div className="flex flex-wrap gap-2 rounded-2xl bg-black/20 p-2">
+              <button
+                type="button"
+                onClick={() => setActiveTab('cost')}
+                className={`flex-1 rounded-xl px-4 py-3 text-sm font-semibold transition-colors sm:flex-none sm:px-8 ${
+                  activeTab === 'cost'
+                    ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg shadow-purple-500/30'
+                    : 'text-slate-300 hover:bg-white/10'
+                }`}
+              >
+                💰 Coste del proyecto
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab('capacity')}
+                className={`flex-1 rounded-xl px-4 py-3 text-sm font-semibold transition-colors sm:flex-none sm:px-8 ${
+                  activeTab === 'capacity'
+                    ? 'bg-gradient-to-r from-cyan-500 to-emerald-500 text-white shadow-lg shadow-cyan-500/30'
+                    : 'text-slate-300 hover:bg-white/10'
+                }`}
+              >
+                👥 Dimensionamiento
+              </button>
             </div>
 
-            {activeTab === 'costo' && (
-              <div className="tab-content">
-                <h3 className="text-xl font-semibold mb-4 text-center">Comparativa de Costes del Proyecto</h3>
-                <p className="text-center text-gray-500 mb-6">
-                  Existe una gran disparidad entre el presupuesto oficial, el coste total estimado por los opositores y el coste que tendrían las supuestas alternativas.
-                </p>
-                <div className="chart-container mx-auto">
-                  <canvas id="costChart"></canvas>
-                </div>
-                <p className="text-center text-sm text-gray-500 mt-4">
-                  Los ciudadanos argumentan que con 131M€ se podrían pagar las multas de la UE durante 20 años.
-                </p>
-              </div>
-            )}
-
-            {activeTab === 'capacidad' && (
-              <div className="tab-content">
-                <h3 className="text-xl font-semibold mb-4 text-center">¿Para cuánta gente es la depuradora?</h3>
-                <p className="text-center text-gray-500 mb-6">
-                  Las cifras oficiales sobre la población a la que servirá la EDAR varían enormemente, desde 50.000 hasta más de 1 millón de habitantes.
-                </p>
-                <div className="chart-container mx-auto">
-                  <canvas id="capacityChart"></canvas>
-                </div>
-                <div className="max-w-md mx-auto mt-4">
-                  <label htmlFor="population-slider" className="block mb-2 text-sm font-medium text-gray-900">
-                    Población a servir: <span className="font-bold text-custom-accent-green">{new Intl.NumberFormat('es-ES').format(population)}</span>
-                  </label>
-                  <input
-                    id="population-slider"
-                    type="range"
-                    min="50000"
-                    max="1000000"
-                    value={population}
-                    step="5000"
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-                    onChange={(e) => setPopulation(parseInt(e.target.value))}
-                  />
+            <div className="mt-6 rounded-2xl border border-white/10 bg-black/30 p-6">
+              <div className={`space-y-6 ${activeTab === 'cost' ? 'block' : 'hidden'}`}>
+                <header className="text-center">
+                  <h3 className="text-2xl font-semibold text-white">Comparativa de inversiones</h3>
+                  <p className="mt-2 text-sm text-slate-300">
+                    Con 131 M€ la ciudadanía calcula que podrían pagarse 20 años de sanciones europeas sin sacrificar la vega. ¿Tiene sentido económico la obra propuesta?
+                  </p>
+                </header>
+                <div className="mx-auto h-72 w-full max-w-2xl">
+                  <canvas id="mestanzaCostChart" />
                 </div>
               </div>
-            )}
-          </div>
-        </section>
 
-        {/* Section 3: Impacto Real */}
-        <section id="impacto" className="py-16 bg-custom-secondary rounded-xl px-4 sm:px-6 lg:px-8 mb-8">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold">El Impacto Real sobre el Terreno</h2>
-            <p className="mt-2 text-gray-600">
-              Más allá de las cifras, las consecuencias de construir en la Vega de Mestanza son el núcleo de la preocupación ciudadana. Se centran en el riesgo de inundación y la pérdida irreparable de biodiversidad y actividad económica.
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {/* Inundabilidad */}
-            <div className="bg-white p-8 rounded-lg shadow-md">
-              <h3 className="text-2xl font-bold mb-4 text-custom-accent-terracotta">
-                Riesgo de Inundación: Un "Tapón" de Hormigón
-              </h3>
-              <p className="mb-6">
-                La vega actúa como una esponja natural que absorbe las crecidas del río Guadalhorce. Construir una plataforma impermeable de 4 metros de altura cambiaría la dinámica del agua.
-              </p>
-              <div className="space-y-6">
-                <div>
-                  <h4 className="font-semibold mb-2">Situación Actual: La Vega Absorbe</h4>
-                  <div className="flex items-center p-3 border-2 border-dashed border-blue-300 rounded-lg bg-blue-50">
-                    <div className="text-2xl mr-3">🏞️</div>
-                    <div className="flex-1 text-sm">
-                      El río se desborda sobre la vega, que absorbe el agua lentamente, protegiendo las zonas bajas.
-                    </div>
+              <div className={`${activeTab === 'capacity' ? 'block' : 'hidden'}`}>
+                <header className="text-center">
+                  <h3 className="text-2xl font-semibold text-white">¿Para cuánta gente se construye?</h3>
+                  <p className="mt-2 text-sm text-slate-300">
+                    El rango oficial oscila entre 50.000 y 1.000.000 de habitantes. Ajusta la previsión para ver cuánto margen real queda.
+                  </p>
+                </header>
+                <div className="mx-auto mt-6 grid gap-8 md:grid-cols-[minmax(0,400px)_1fr] md:items-center">
+                  <div className="h-72">
+                    <canvas id="mestanzaCapacityChart" />
                   </div>
-                </div>
-                <div className="text-center font-bold text-2xl text-gray-400">⬇️</div>
-                <div>
-                  <h4 className="font-semibold mb-2">Con la EDAR: El Agua se Desvía</h4>
-                  <div className="flex items-center p-3 border-2 border-dashed border-red-300 rounded-lg bg-red-50">
-                    <div className="text-2xl mr-3">🏭</div>
-                    <div className="flex-1 text-sm">
-                      Una plataforma de hormigón bloquea el paso. El agua se acelera y desvía, amenazando a 9 núcleos de población.
+                  <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6">
+                    <p className="text-sm uppercase tracking-widest text-purple-200/80">Población a servir</p>
+                    <p className="mt-2 text-4xl font-bold text-white">
+                      {new Intl.NumberFormat('es-ES').format(population)} habitantes
+                    </p>
+                    <p className="mt-3 text-sm text-slate-300">
+                      Mueve el control para explorar escenarios entre 50.000 y 1.000.000 de personas.
+                    </p>
+                    <div className="mt-6">
+                      <input
+                        type="range"
+                        min={50000}
+                        max={1000000}
+                        step={5000}
+                        value={population}
+                        onChange={(event) => setPopulation(Number(event.target.value))}
+                        className="w-full accent-purple-400"
+                      />
+                      <div className="mt-2 flex justify-between text-xs text-slate-400">
+                        <span>50K</span>
+                        <span>500K</span>
+                        <span>1M</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+        </section>
 
-            {/* Ecocidio */}
-            <div className="bg-white p-8 rounded-lg shadow-md">
-              <h3 className="text-2xl font-bold mb-4 text-custom-accent-green">Ecocidio en Cifras</h3>
-              <p className="mb-6">
-                La construcción supondría la desaparición de un paisaje y un modo de vida con un valor incalculable para la zona.
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-center p-4 bg-green-50 rounded-lg">
-                  <span className="text-4xl">🌳</span>
-                  <div className="ml-4">
-                    <div className="text-2xl font-bold">22.000</div>
-                    <div className="text-gray-600">Árboles frutales (naranjos y limoneros) serían talados.</div>
-                  </div>
-                </div>
-                <div className="flex items-center p-4 bg-green-50 rounded-lg">
-                  <span className="text-4xl">👨‍👩‍👧‍👦</span>
-                  <div className="ml-4">
-                    <div className="text-2xl font-bold">300</div>
-                    <div className="text-gray-600">Familias de agricultores perderían su sustento directo.</div>
-                  </div>
-                </div>
-                <div className="flex items-center p-4 bg-green-50 rounded-lg">
-                  <span className="text-4xl">🏞️</span>
-                  <div className="ml-4">
-                    <div className="text-2xl font-bold">1</div>
-                    <div className="text-gray-600">"Última vega viva" cerca de Málaga, un pulmón verde y patrimonio natural.</div>
-                  </div>
-                </div>
+        <section className="mt-20 grid gap-8 md:grid-cols-2">
+          {impactHighlights.map((card) => (
+            <article
+              key={card.title}
+              className={`relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br ${card.accent} p-8 shadow-lg`}
+            >
+              <div className="absolute inset-0 -z-10 opacity-40">
+                <div className="absolute right-[-3rem] top-[-3rem] h-48 w-48 rounded-full bg-white/10 blur-3xl" />
               </div>
+              <span className="inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-white/80">
+                {card.badge}
+              </span>
+              <h3 className="mt-4 text-2xl font-semibold text-white">{card.title}</h3>
+              <ul className="mt-6 space-y-4 text-sm text-slate-100">
+                {card.bullets.map((bullet) => (
+                  <li key={bullet} className="flex items-start gap-3">
+                    <span className="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-white/60" />
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </section>
+
+        <section className="mt-20 rounded-3xl border border-white/10 bg-white/[0.04] p-10 shadow-xl">
+          <h2 className="text-3xl font-bold text-white">Conclusiones estratégicas</h2>
+          <div className="mt-6 grid gap-6 md:grid-cols-2">
+            <div className="rounded-2xl border border-white/10 bg-black/30 p-6">
+              <h3 className="text-lg font-semibold text-purple-200">Lo que dicen los datos</h3>
+              <ul className="mt-4 space-y-3 text-sm text-slate-200/90">
+                <li>• Invertir 106 M€ para evitar sanciones de 131 M€ abre la puerta a soluciones menos intrusivas.</li>
+                <li>• El dimensionamiento real sigue sin una memoria técnica pública que lo avale.</li>
+                <li>• El riesgo hidrológico no cuenta con simulaciones recientes que contemplen el cambio climático.</li>
+              </ul>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-black/30 p-6">
+              <h3 className="text-lg font-semibold text-purple-200">Qué esperar a corto plazo</h3>
+              <ul className="mt-4 space-y-3 text-sm text-slate-200/90">
+                <li>• Transparencia: la ciudadanía exige publicar los estudios comparativos de ubicaciones.</li>
+                <li>• Gobernanza: urge un comité mixto que incluya agricultores, técnicos y administración.</li>
+                <li>• Innovación: hay margen para soluciones modulares o descentralizadas que reduzcan el impacto.</li>
+              </ul>
             </div>
           </div>
+          <p className="mt-6 text-base text-slate-200/80">
+            La urgencia de depurar aguas residuales no está en duda. Lo que se discute es si sacrificar la Vega de Mestanza es la mejor respuesta cuando existen alternativas menos traumáticas y más alineadas con una Málaga resiliente.
+          </p>
         </section>
-
-        {/* Section 4: Conclusion */}
-        <section id="conclusion" className="py-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold">Conclusión del Análisis</h2>
-            <p className="mt-2 text-gray-600">
-              Tras contrastar toda la información, esta es la conclusión objetiva extraída del informe.
-            </p>
-          </div>
-          <div className="bg-white max-w-4xl mx-auto p-8 rounded-xl shadow-lg border-l-4 border-custom-accent-green">
-            <p className="text-lg text-gray-800 leading-relaxed">
-              Si bien la necesidad de una depuradora es <strong>innegable y urgente</strong> para cumplir la ley y proteger el medio ambiente, la elección de la Vega de Mestanza como ubicación parece responder más a criterios de <strong>oportunidad administrativa</strong> que a una evaluación rigurosa de impacto y coste-beneficio.
-            </p>
-            <br />
-            <p className="text-lg text-gray-800 leading-relaxed">
-              Las quejas ciudadanas sobre el <strong>riesgo de inundación</strong>, la <strong>destrucción de un ecosistema agrícola único</strong> y el <strong>elevado coste</strong> del proyecto no son infundadas y merecen una respuesta técnica y transparente por parte de las administraciones implicadas. El debate debe centrarse en buscar la mejor solución, no solo la más rápida.
-            </p>
-          </div>
-        </section>
-
       </article>
     </BlogLayout>
   );
