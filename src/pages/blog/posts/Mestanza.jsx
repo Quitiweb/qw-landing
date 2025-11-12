@@ -156,7 +156,7 @@ function Mestanza() {
       <style>{`\n        .bg-custom-main { background-color: #FDFBF7; }\n        .bg-custom-secondary { background-color: #F8F5F0; }\n        .text-custom-accent-green { color: #5E8C61; }\n        .bg-custom-accent-green { background-color: #5E8C61; }\n        .border-custom-accent-green { border-color: #5E8C61; }\n        .text-custom-accent-terracotta { color: #A98C6D; }\n        .bg-custom-accent-terracotta { background-color: #A98C6D; }\n        .border-custom-accent-terracotta { border-color: #A98C6D; }\n        .tab-btn.active {\n          border-color: #5E8C61;\n          background-color: #5E8C61;\n          color: white;\n        }\n        .chart-container {\n          position: relative;\n          height: 350px;\n          width: 100%;\n          max-width: 500px;\n          margin: auto;\n        }\n      `}</style>
 
       <article className="bg-custom-main text-gray-800">
-        
+
         {/* Hero Section */}
         <section className="text-center py-16 md:py-24 px-4">
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">
@@ -210,17 +210,17 @@ function Mestanza() {
               Analizamos los puntos clave de la discordia: la capacidad real del proyecto y su coste económico. Interactúa con los datos para entender las diferencias entre ambas posturas.
             </p>
           </div>
-          
+
           <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg max-w-4xl mx-auto">
             <div className="mb-6 border-b border-gray-200">
               <nav className="flex space-x-2 sm:space-x-4" aria-label="Tabs">
-                <button 
+                <button
                   className={`tab-btn font-medium py-3 px-4 rounded-t-lg border-b-2 ${activeTab === 'costo' ? 'active' : ''}`}
                   onClick={() => setActiveTab('costo')}
                 >
                   💰 El Coste Real
                 </button>
-                <button 
+                <button
                   className={`tab-btn font-medium py-3 px-4 rounded-t-lg border-b-2 ${activeTab === 'capacidad' ? 'active' : ''}`}
                   onClick={() => setActiveTab('capacidad')}
                 >
@@ -257,13 +257,13 @@ function Mestanza() {
                   <label htmlFor="population-slider" className="block mb-2 text-sm font-medium text-gray-900">
                     Población a servir: <span className="font-bold text-custom-accent-green">{new Intl.NumberFormat('es-ES').format(population)}</span>
                   </label>
-                  <input 
-                    id="population-slider" 
-                    type="range" 
-                    min="50000" 
-                    max="1000000" 
-                    value={population} 
-                    step="5000" 
+                  <input
+                    id="population-slider"
+                    type="range"
+                    min="50000"
+                    max="1000000"
+                    value={population}
+                    step="5000"
                     className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
                     onChange={(e) => setPopulation(parseInt(e.target.value))}
                   />
@@ -368,6 +368,7 @@ function Mestanza() {
 
       </article>
     </BlogLayout>
+  );
 }
 
 export default Mestanza;

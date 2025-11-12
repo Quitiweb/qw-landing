@@ -14,7 +14,10 @@ export const postsMetadata = [
     date: '2025-11-11',
     readTime: '12 min',
     category: 'Activismo',
-    image: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800',
+    image: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=1200&q=80&auto=format',
+    author: 'Quitiweb',
+    tags: ['Activismo', 'Infraestructura', 'Málaga'],
+    featured: true,
     component: Mestanza,
   },
   {
@@ -25,7 +28,10 @@ export const postsMetadata = [
     date: '2025-11-08',
     readTime: '8 min',
     category: 'Capitalismo',
-    image: '/thumbnail.kk.quitiweb.com.png',
+    image: 'https://imagedelivery.net/LqiWLm-3MGbYHtFuUbcBtA/119580eb-abd9-4191-b93a-f01938786700/public',
+    author: 'Quitiweb',
+    tags: ['Capitalismo', 'Plataformas', 'Estrategia'],
+    featured: false,
     component: Mierdificacion,
   },
 ];
@@ -36,14 +42,23 @@ export const postsMap = postsMetadata.reduce((acc, post) => {
   return acc;
 }, {});
 
+// Lista ordenada por fecha descendente
+export const getAllPosts = () =>
+  [...postsMetadata].sort((a, b) => new Date(b.date) - new Date(a.date));
+
 // Función para obtener los últimos N posts
 export const getLatestPosts = (count = 3) => {
-  return postsMetadata
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .slice(0, count);
+  return getAllPosts().slice(0, count);
 };
 
 // Función para obtener un post por slug
 export const getPostBySlug = (slug) => {
   return postsMetadata.find(post => post.slug === slug);
+};
+
+// Función para obtener posts sugeridos excluyendo el actual
+export const getSuggestedPosts = (slug, count = 4) => {
+  return getAllPosts()
+    .filter(post => post.slug !== slug)
+    .slice(0, count);
 };

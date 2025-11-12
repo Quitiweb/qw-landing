@@ -1,131 +1,106 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { toast } from '@/components/ui/use-toast';
+import { getLatestPosts } from '@/data/blogPosts';
+
+const formatDate = (date) =>
+  new Intl.DateTimeFormat('es-ES', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  }).format(new Date(date));
 
 const Blog = () => {
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    const savedPosts = localStorage.getItem('blogPosts');
-    if (savedPosts) {
-      setPosts(JSON.parse(savedPosts));
-    } else {
-      const defaultPosts = [
-        {
-          id: 1,
-          title: 'El Bucle de la Enshittification',
-          excerpt: 'Por qué tus plataformas favoritas (Facebook, Google, Amazon...) parecen empeorar día tras día.',
-          date: '2025-11-08',
-          readTime: '8 min',
-          category: 'Capitalismo',
-          image: '/thumbnail.kk.quitiweb.com.png',
-          url: 'https://kk.quitiweb.com/',
-        },
-        {
-          id: 2,
-          title: 'Optimización de Bases de Datos en Producción',
-          excerpt: 'Técnicas avanzadas para mejorar el rendimiento de tus bases de datos.',
-          date: '2024-01-10',
-          readTime: '6 min',
-          category: 'Bases de Datos',
-          image: 'https://images.unsplash.com/photo-1595872018818-97555653a011',
-        },
-        {
-          id: 3,
-          title: 'Seguridad en Aplicaciones Cloud',
-          excerpt: 'Mejores prácticas para proteger tus aplicaciones en la nube.',
-          date: '2024-01-05',
-          readTime: '10 min',
-          category: 'Seguridad',
-          image: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb',
-        },
-      ];
-      localStorage.setItem('blogPosts', JSON.stringify(defaultPosts));
-      setPosts(defaultPosts);
-    }
-  }, []);
-
-  const handleReadMore = (post) => {
-    if (post.url) {
-      window.open(post.url, '_blank', 'noopener,noreferrer');
-    } else {
-      toast({
-        title: "🚧 Esta función aún no está implementada",
-        description: "¡Pero no te preocupes! Puedes solicitarla en tu próximo mensaje 🚀",
-      });
-    }
-  };
+  const posts = getLatestPosts(6);
+  const hasPosts = posts.length > 0;
 
   return (
-    <section id="blog" className="py-20 px-4 relative">
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Blog <span className="gradient-text">Personal</span>
-          </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Comparto conocimientos y experiencias sobre tecnología y arquitectura de software
-          </p>
-        </motion.div>
+    <section id="blog" className="relative px-4 py-20">
+      <div className="absolute inset-0 bg-gradient-to-b from-purple-900/10 via-transparent to-pink-900/10" />
+      <div className="relative mx-auto max-w-7xl">
+        <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <p className="text-sm font-semibold uppercase tracking-wide text-purple-300">Blog</p>
+            <h2 className="text-4xl font-bold md:text-5xl">
+              Historias y análisis <span className="gradient-text">desde la trinchera</span>
+            </h2>
+            <p className="mt-3 max-w-xl text-lg text-gray-300">
+              Casos reales, aprendizajes técnicos y estrategia digital para construir productos que importan.
+            </p>
+          </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {posts.map((post, index) => (
-            <motion.article
-              key={post.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="glass-effect rounded-2xl overflow-hidden hover:bg-white/10 transition-all group cursor-pointer"
-              onClick={() => post.url && handleReadMore(post)}
-            >
-              <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-purple-900/50 to-pink-900/50">
-                <img
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  alt={post.title}
-                  src={post.image} />
-                <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-xs font-semibold">
-                    {post.category}
-                  </span>
-                </div>
-              </div>
-              <div className="p-6">
-                <div className="flex items-center gap-4 text-sm text-gray-400 mb-3">
-                  <div className="flex items-center gap-1">
-                    <Calendar className="w-4 h-4" />
-                    <span>{new Date(post.date).toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Clock className="w-4 h-4" />
-                    <span>{post.readTime}</span>
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-purple-400 transition-colors">
-                  {post.title}
-                </h3>
-                <p className="text-gray-400 mb-4 line-clamp-2">
-                  {post.excerpt}
-                </p>
-                <Button
-                  variant="ghost"
-                  onClick={() => handleReadMore(post)}
-                  className="text-purple-400 hover:text-purple-300 p-0 h-auto font-semibold group/btn"
+          <Link
+            to="/blog"
+            className="inline-flex items-center justify-center self-start rounded-full border border-purple-500/40 bg-purple-500/10 px-6 py-2 text-sm font-semibold text-purple-200 transition-colors hover:border-purple-400 hover:text-white"
+          >
+            Ver todos los artículos
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Link>
+        </div>
+
+        <div className="relative">
+          {hasPosts ? (
+            <div className="-mx-4 flex gap-6 overflow-x-auto px-4 pb-4 pt-2 sm:px-0" style={{ scrollbarWidth: 'thin' }}>
+              {posts.map((post, index) => (
+              <motion.div
+                key={post.slug}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                className="group relative min-w-[280px] max-w-sm flex-1"
+              >
+                <Link
+                  to={`/blog/${post.slug}`}
+                  className="flex h-full flex-col overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-br from-purple-500/10 to-pink-500/10 transition-transform duration-300 hover:-translate-y-1"
                 >
-                  Leer más
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
-                </Button>
-              </div>
-            </motion.article>
-          ))}
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <span className="absolute left-4 top-4 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 px-3 py-1 text-xs font-semibold">
+                      {post.category}
+                    </span>
+                  </div>
+
+                  <div className="flex flex-1 flex-col p-6">
+                    <div className="flex items-center gap-4 text-sm text-gray-400">
+                      <span className="inline-flex items-center gap-1">
+                        <Calendar className="h-4 w-4" />
+                        {formatDate(post.date)}
+                      </span>
+                      <span className="inline-flex items-center gap-1">
+                        <Clock className="h-4 w-4" />
+                        {post.readTime}
+                      </span>
+                    </div>
+                    <h3 className="mt-4 text-2xl font-semibold text-white transition-colors group-hover:text-purple-300">
+                      {post.title}
+                    </h3>
+                    <p className="mt-3 flex-1 text-gray-300 line-clamp-3">{post.excerpt}</p>
+                    <span className="mt-5 inline-flex items-center text-sm font-semibold text-purple-300">
+                      Leer artículo
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </div>
+                </Link>
+              </motion.div>
+              ))}
+            </div>
+          ) : (
+            <div className="glass-effect rounded-3xl border border-white/5 p-10 text-center text-gray-300">
+              Muy pronto compartiré los primeros artículos. Mientras tanto, puedes seguir las novedades en el boletín.
+            </div>
+          )}
         </div>
       </div>
     </section>
