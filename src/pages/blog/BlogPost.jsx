@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import Footer from '@/components/Footer';
 import PostCard from '@/components/blog/PostCard';
@@ -9,6 +9,10 @@ function BlogPost() {
   const PostComponent = postsMap[slug];
   const metadata = getPostBySlug(slug);
   const suggestions = getSuggestedPosts(slug, 3);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, [slug]);
 
   if (!PostComponent) {
     return <Navigate to="/blog" replace />;
