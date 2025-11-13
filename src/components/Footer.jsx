@@ -64,7 +64,7 @@ const Footer = () => {
                 <Twitter className="w-5 h-5" />
               </a>
               <a
-                href="mailto:info@quitiweb.com"
+                href="mailto:quiti.kites@gmail.com"
                 className="w-10 h-10 rounded-full glass-effect flex items-center justify-center hover:bg-purple-500/20 transition-all"
               >
                 <Mail className="w-5 h-5" />

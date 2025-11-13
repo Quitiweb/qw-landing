@@ -11,21 +11,21 @@ const ProjectsCarousel = () => {
       name: 'Task Manager',
       url: 'task.quitiweb.com',
       description: 'Aplicación de gestión de tareas con interfaz intuitiva y sincronización en tiempo real.',
-      image: 'Modern task management dashboard with colorful cards and productivity metrics',
+      image: '/projects/tareas-equilibradas.png',
       tags: ['React', 'Node.js', 'MongoDB'],
     },
     {
       name: 'Proyecto 2',
       url: 'app2.quitiweb.com',
       description: 'Plataforma innovadora para optimizar procesos empresariales.',
-      image: 'Sleek business analytics dashboard with charts and graphs',
+      image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80',
       tags: ['Vue.js', 'PostgreSQL', 'AWS'],
     },
     {
       name: 'Proyecto 3',
       url: 'app3.quitiweb.com',
       description: 'Sistema de gestión integral con módulos personalizables.',
-      image: 'Modern CRM interface with customer data and interaction timeline',
+      image: 'https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=1200&q=80',
       tags: ['Angular', 'Firebase', 'TypeScript'],
     },
   ];
@@ -110,7 +110,8 @@ const ProjectsCarousel = () => {
                     <img
                       className="w-full h-full object-cover"
                       alt={`Screenshot of ${projects[currentIndex].name}`}
-                     src="https://images.unsplash.com/photo-1572177812156-58036aae439c" />
+                      src={projects[currentIndex].image}
+                    />
                   </div>
                 </div>
               </motion.div>
