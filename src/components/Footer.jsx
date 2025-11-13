@@ -40,25 +40,31 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">Sígueme</h4>
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://github.com/Quitiweb"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full glass-effect flex items-center justify-center hover:bg-purple-500/20 transition-all"
               >
                 <Github className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/in/rafaelruizromero/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full glass-effect flex items-center justify-center hover:bg-purple-500/20 transition-all"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://x.com/Quitiweb"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full glass-effect flex items-center justify-center hover:bg-purple-500/20 transition-all"
               >
                 <Twitter className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="mailto:info@quitiweb.com"
                 className="w-10 h-10 rounded-full glass-effect flex items-center justify-center hover:bg-purple-500/20 transition-all"
               >
                 <Mail className="w-5 h-5" />
