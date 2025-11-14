@@ -25,7 +25,7 @@ const ProjectsCarousel = () => {
       name: 'Taxi Málaga',
       url: 'taxi.quitiweb.com',
       description: 'Tu servicio de taxi confiable y eficiente en Málaga.',
-      image: 'https://imgur.com/vn8atfy',
+      image: 'https://i.imgur.com/vn8atfy.png',
       tags: ['Vue.js', 'PostgreSQL', 'AWS'],
     },
   ];
