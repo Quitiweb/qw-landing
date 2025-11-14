@@ -22,10 +22,10 @@ const ProjectsCarousel = () => {
       tags: ['Angular', 'Firebase', 'TypeScript'],
     },
     {
-      name: 'Proyecto 3',
-      url: 'app3.quitiweb.com',
-      description: 'Sistema de gestión integral con módulos personalizables.',
-      image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80',
+      name: 'Taxi Málaga',
+      url: 'taxi.quitiweb.com',
+      description: 'Tu servicio de taxi confiable y eficiente en Málaga.',
+      image: 'https://imgur.com/vn8atfy',
       tags: ['Vue.js', 'PostgreSQL', 'AWS'],
     },
   ];
