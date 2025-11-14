@@ -31,7 +31,7 @@ const Blog = () => {
               Historias y análisis <span className="gradient-text">desde la trinchera</span>
             </h2>
             <p className="mt-3 max-w-xl text-lg text-gray-300">
-              Casos reales, aprendizajes técnicos y estrategia digital para construir productos que importan.
+              Reflexiones sobre tecnología, sociedad y futuros posibles: desde inteligencia artificial y robótica hasta psicología, filosofía y cultura digital.
             </p>
           </motion.div>
 
