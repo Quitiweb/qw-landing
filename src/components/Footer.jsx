@@ -19,17 +19,17 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">Enlaces Rápidos</h4>
             <ul className="space-y-2 text-gray-400">
               <li>
-                <a href="#services" className="hover:text-purple-400 transition-colors">
+                <a href="https://quitiweb.com/#services" className="hover:text-purple-400 transition-colors">
                   Servicios
                 </a>
               </li>
               <li>
-                <a href="#projects" className="hover:text-purple-400 transition-colors">
+                <a href="https://quitiweb.com/#projects" className="hover:text-purple-400 transition-colors">
                   Proyectos
                 </a>
               </li>
               <li>
-                <a href="#blog" className="hover:text-purple-400 transition-colors">
+                <a href="https://quitiweb.com/blog" className="hover:text-purple-400 transition-colors">
                   Blog
                 </a>
               </li>
