@@ -15,18 +15,18 @@ const ProjectsCarousel = () => {
       tags: ['React', 'Node.js', 'MongoDB'],
     },
     {
-      name: 'Proyecto 2',
-      url: 'app2.quitiweb.com',
-      description: 'Plataforma innovadora para optimizar procesos empresariales.',
-      image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80',
-      tags: ['Vue.js', 'PostgreSQL', 'AWS'],
+      name: 'Menú Familiar',
+      url: 'menu.quitiweb.com',
+      description: 'Menú familiar personalizado para facilitar la planificación y organización de comidas en el hogar.',
+      image: 'https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=1200&q=80',
+      tags: ['Angular', 'Firebase', 'TypeScript'],
     },
     {
       name: 'Proyecto 3',
       url: 'app3.quitiweb.com',
       description: 'Sistema de gestión integral con módulos personalizables.',
-      image: 'https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=1200&q=80',
-      tags: ['Angular', 'Firebase', 'TypeScript'],
+      image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80',
+      tags: ['Vue.js', 'PostgreSQL', 'AWS'],
     },
   ];
 
