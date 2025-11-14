@@ -3,6 +3,8 @@
 
 import Mierdificacion from '@/pages/blog/posts/Mierdificacion';
 import Mestanza from '@/pages/blog/posts/Mestanza';
+import MierdificacionIA from '@/pages/blog/posts/MierdificacionIA';
+import RobotsHumanoides from '@/pages/blog/posts/RobotsHumanoides';
 
 // Metadata de los posts para el carrusel y listados
 export const postsMetadata = [
@@ -22,6 +24,34 @@ export const postsMetadata = [
   },
   {
     id: 2,
+    slug: 'mierdificacion-ia',
+    title: 'El Fantasma de la "Mierdificación" en la IA',
+    excerpt: 'Análisis sobre si las plataformas de IA (como ChatGPT o Gemini) seguirán el mismo ciclo de "enshittification" que las redes sociales.',
+    date: '2025-11-10',
+    readTime: '7 min',
+    category: 'Inteligencia Artificial',
+    image: '/blog/mierdificacion.png',
+    author: 'Quitiweb',
+    tags: ['IA', 'Monopolios', 'Futuro'],
+    featured: false,
+    component: MierdificacionIA,
+  },
+  {
+    id: 3,
+    slug: 'robots-humanoides',
+    title: 'Robots Humanoides en Málaga: ¿Cuándo por 10.000€?',
+    excerpt: 'Una estimación realista sobre cuándo podremos comprar un robot humanoide útil para el hogar en Málaga por unos 10.000€.',
+    date: '2025-11-09',
+    readTime: '6 min',
+    category: 'Robótica',
+    image: '/blog/mierdificacion.png',
+    author: 'Quitiweb',
+    tags: ['Robótica', 'IA', 'Futuro'],
+    featured: false,
+    component: RobotsHumanoides,
+  },
+  {
+    id: 4,
     slug: 'mierdificacion',
     title: 'El Bucle de la "Enshittification"',
     excerpt: 'Por qué tus plataformas favoritas (Facebook, Google, Amazon...) parecen empeorar día tras día.',
