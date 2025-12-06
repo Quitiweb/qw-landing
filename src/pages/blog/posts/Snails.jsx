@@ -235,7 +235,7 @@ function Snails() {
           <motion.span
             aria-hidden
             className="absolute bottom-6 left-0 text-4xl"
-            animate={{ x: ['-10%', '110%'] }}
+            animate={{ x: ['-35vw', '85vw'] }}
             transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
           >
             🐌
