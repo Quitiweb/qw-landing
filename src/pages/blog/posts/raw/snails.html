@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Don de los Caracoles: La Gran Evasión</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,700;1,300&family=Roboto:wght@300;400;700&display=swap');
+
+        :root {
+            --primary: #c0392b;
+            --secondary: #2c3e50;
+            --accent: #f1c40f;
+            --bg: #f9f9f9;
+            --text: #333;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: var(--secondary);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Animated Snail Effect in Header */
+        .snail-icon {
+            position: absolute;
+            font-size: 3rem;
+            bottom: 10px;
+            left: -50px;
+            animation: moveSnail 20s linear infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes moveSnail {
+            0% { left: -50px; }
+            100% { left: 100%; }
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            font-family: 'Merriweather', serif;
+            color: var(--secondary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        .highlight {
+            background-color: rgba(241, 196, 15, 0.3);
+            padding: 0 4px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .quote {
+            font-family: 'Merriweather', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            border-left: 4px solid var(--primary);
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+        }
+
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .character {
+            text-align: center;
+            padding: 1rem;
+            background: #ecf0f1;
+            border-radius: 8px;
+        }
+
+        .character-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .step-list li {
+            background: #fff;
+            border-left: 4px solid var(--primary);
+            margin-bottom: 10px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .step-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-right: 15px;
+            min-width: 40px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            color: #777;
+            background: #eee;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .card { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🐌 El Don de los Caracoles</h1>
+    <div class="subtitle">Cómo un jubilado y sus moluscos están engañando al sistema fiscal británico</div>
+    <div class="snail-icon">🐌</div>
+</header>
+
+<main>
+
+    <!-- INTRODUCCIÓN -->
+    <div class="card">
+        <h2>¿De qué va esto?</h2>
+        <p>Imagínate un rascacielos de oficinas en el centro de Londres. Está vacío. El dueño debería pagar cientos de miles de libras en impuestos al año por tenerlo desocupado.</p>
+        <p>Entra en escena <strong>Terry Ball</strong>, un señor de 79 años con un plan maestro: <strong>llenar las oficinas de cajas con caracoles</strong>.</p>
+        <p>¿Por qué? Porque según una vieja ley británica, criar caracoles cuenta como <span class="highlight">"piscifactoría"</span>. Y las piscifactorías <strong>no pagan impuestos</strong>.</p>
+    </div>
+
+    <!-- PROTAGONISTAS -->
+    <div class="card">
+        <h2>Los Protagonistas</h2>
+        <div class="character-grid">
+            <div class="character">
+                <div class="character-icon">👴🏻</div>
+                <strong>Terry Ball</strong>
+                <p>El cerebro. Ex-vendedor de zapatos, "amigo" de la mafia italiana y experto en vacíos legales.</p>
+            </div>
+            <div class="character">
+                <div class="character-icon">🇮🇹</div>
+                <strong>"Giuseppe"</strong>
+                <p>El empleado. Ex-convicto napolitano que cuida de los caracoles en Lancashire como "favor".</p>
+            </div>
+            <div class="character">
+                <div class="character-icon">🏢</div>
+                <strong>El Consejo (Westminster)</strong>
+                <p>Los antagonistas. Intentan cobrar £286,000 en impuestos, pero Terry siempre se les escapa.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- EL ESQUEMA -->
+    <div class="card">
+        <h2>El "Bucle" del Caracol</h2>
+        <p>Terry no hace esto por dinero (aunque ayuda), lo hace por "travesura" y venganza contra el sistema. Así funciona su esquema:</p>
+        <ul class="step-list">
+            <li>
+                <span class="step-number">1</span>
+                <div>Terry crea una <strong>Empresa Fantasma</strong> (ej. "Snail Primary Products Ltd") sin activos.</div>
+            </li>
+            <li>
+                <span class="step-number">2</span>
+                <div>Alquila una planta de oficinas vacía por una tarifa nominal.</div>
+            </li>
+            <li>
+                <span class="step-number">3</span>
+                <div>Coloca cajas con caracoles y lechuga en las oficinas.</div>
+            </li>
+            <li>
+                <span class="step-number">4</span>
+                <div>Solicita la <strong>exención de impuestos agrícolas</strong> (porque los caracoles son "peces" ante la ley).</div>
+            </li>
+            <li>
+                <span class="step-number">5</span>
+                <div>Si el Ayuntamiento reclama, Terry liquida la empresa y crea una nueva (técnica del "Ave Fénix").</div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- GRÁFICO DE DINERO -->
+    <div class="card">
+        <h2>¿Por qué lo hacen los propietarios?</h2>
+        <p>Para un propietario de un edificio vacío, contratar a Terry es un negocio redondo. Mira la diferencia de costes:</p>
+        <div class="chart-container">
+            <canvas id="costChart"></canvas>
+        </div>
+        <p style="font-size: 0.9em; color: #666; margin-top: 10px;">*Cifras estimadas basadas en tasas comerciales típicas de Londres.</p>
+    </div>
+
+    <!-- GRÁFICO DE COMPOSICIÓN -->
+    <div class="card">
+        <h2>Ingredientes del Imperio</h2>
+        <p>Terry dice que tiene "granjas" por todo Londres. Pero su imperio es una mezcla curiosa de elementos reales y ficticios.</p>
+        <div class="chart-container">
+            <canvas id="empireChart"></canvas>
+        </div>
+    </div>
+
+    <!-- CITA FINAL -->
+    <div class="card" style="border-left: 5px solid #2c3e50;">
+        <h2>La Filosofía de Terry</h2>
+        <div class="quote">
+            "Cumplo 80 años el mes que viene y no tengo nada a mi nombre. ¿Qué van a hacer? No puedes quitarle nada a la nada. Ya han dejado de torturar a la gente."
+        </div>
+        <p>Terry Ball vive en una caravana en Lancashire, bebe cerveza con ex-mafiosos y dedica sus últimos años a volver locos a los recaudadores de impuestos.</p>
+    </div>
+
+</main>
+
+<footer>
+    Basado en el artículo de The Guardian: "The snail farm don" (2025).<br>
+    Resumido y visualizado para lectura rápida.
+</footer>
+
+<script>
+    // Configuración de los gráficos
+    Chart.defaults.font.family = "'Roboto', sans-serif";
+    Chart.defaults.color = '#333';
+
+    // 1. Gráfico de Costes (Barras)
+    const ctxCost = document.getElementById('costChart').getContext('2d');
+    new Chart(ctxCost, {
+        type: 'bar',
+        data: {
+            labels: ['Pagar Impuestos (Legal)', 'Esquema Caracoles (Terry)'],
+            datasets: [{
+                label: 'Coste Anual para el Propietario (£)',
+                data: [286000, 15000], // 15k es un estimado de la tarifa de gestión
+                backgroundColor: [
+                    'rgba(192, 57, 43, 0.6)', // Rojo para impuestos altos
+                    'rgba(46, 204, 113, 0.6)' // Verde para ahorro
+                ],
+                borderColor: [
+                    'rgba(192, 57, 43, 1)',
+                    'rgba(46, 204, 113, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return '£' + context.raw.toLocaleString();
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Libras Esterlinas (£)'
+                    }
+                }
+            }
+        }
+    });
+
+    // 2. Gráfico del Imperio (Doughnut)
+    const ctxEmpire = document.getElementById('empireChart').getContext('2d');
+    new Chart(ctxEmpire, {
+        type: 'doughnut',
+        data: {
+            labels: ['Caracoles Reales', 'Empresas Fantasma', 'Audacia Pura', 'Burocracia'],
+            datasets: [{
+                data: [15, 35, 40, 10],
+                backgroundColor: [
+                    '#27ae60', // Caracoles
+                    '#95a5a6', // Fantasma
+                    '#f1c40f', // Audacia
+                    '#c0392b'  // Burocracia
+                ],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

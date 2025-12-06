@@ -5,9 +5,24 @@ import Mierdificacion from '@/pages/blog/posts/Mierdificacion';
 import Mestanza from '@/pages/blog/posts/Mestanza';
 import MierdificacionIA from '@/pages/blog/posts/MierdificacionIA';
 import RobotsHumanoides from '@/pages/blog/posts/RobotsHumanoides';
+import Snails from '@/pages/blog/posts/Snails';
 
 // Metadata de los posts para el carrusel y listados
 export const postsMetadata = [
+  {
+    id: 5,
+    slug: 'snails',
+    title: 'El Don de los Caracoles: la gran evasión',
+    excerpt: 'Caracoles, oficinas vacías y un vacío legal de 1963 para borrar £286.000 en tasas comerciales cada año.',
+    date: '2025-12-06',
+    readTime: '9 min',
+    category: 'Crónica',
+    image: '/blog/snails.png',
+    author: 'Quitiweb',
+    tags: ['Evasión fiscal', 'Reino Unido', 'Historias'],
+    featured: false,
+    component: Snails,
+  },
   {
     id: 1,
     slug: 'mestanza',
