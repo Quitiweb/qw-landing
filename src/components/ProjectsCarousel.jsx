@@ -8,11 +8,11 @@ const ProjectsCarousel = () => {
 
   const projects = [
     {
-      name: 'Task Manager',
-      url: 'task.quitiweb.com',
-      description: 'Aplicación de gestión de tareas con interfaz intuitiva y sincronización en tiempo real.',
-      image: '/projects/tareas-equilibradas.png',
-      tags: ['React', 'Node.js', 'MongoDB'],
+      name: 'Blog de Quitiweb',
+      url: 'quitiweb.com/blog/',
+      description: 'Artículos breves y claros sobre tecnología, IA, producto digital y pensamiento crítico.',
+      image: '/blog/mierdificacion.png',
+      tags: ['Blog', 'IA', 'Tecnología'],
     },
     {
       name: 'Menú Familiar',
