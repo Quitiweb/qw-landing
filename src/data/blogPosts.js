@@ -6,9 +6,24 @@ import Mestanza from '@/pages/blog/posts/Mestanza';
 import MierdificacionIA from '@/pages/blog/posts/MierdificacionIA';
 import RobotsHumanoides from '@/pages/blog/posts/RobotsHumanoides';
 import Snails from '@/pages/blog/posts/Snails';
+import HugoTecnologiaAndalucia from '@/pages/blog/posts/HugoTecnologiaAndalucia';
 
 // Metadata de los posts para el carrusel y listados
 export const postsMetadata = [
+  {
+    id: 6,
+    slug: 'hugo-tecnologia-andalucia',
+    title: 'Planes tech para niños en Málaga, Córdoba y cerca',
+    excerpt: 'Cursos, talleres, museos y escapadas que sí merece la pena vigilar si tienes un peque de 7 años al que le tiran los robots, la programación o el espacio.',
+    date: '2026-04-27',
+    readTime: '8 min',
+    category: 'Familia tech',
+    image: '/blog/hugo-tecnologia-andalucia.svg',
+    author: 'Quitiweb',
+    tags: ['Málaga', 'Córdoba', 'Niños', 'Robótica', 'Programación'],
+    featured: true,
+    component: HugoTecnologiaAndalucia,
+  },
   {
     id: 5,
     slug: 'snails',

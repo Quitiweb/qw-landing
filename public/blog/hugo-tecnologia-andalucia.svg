@@ -1,0 +1,26 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#070B1A"/>
+  <circle cx="1320" cy="180" r="260" fill="#7C3AED" fill-opacity="0.28"/>
+  <circle cx="260" cy="760" r="320" fill="#06B6D4" fill-opacity="0.2"/>
+  <circle cx="760" cy="420" r="420" fill="#DB2777" fill-opacity="0.12"/>
+  <rect x="120" y="150" width="1360" height="600" rx="40" fill="url(#panel)" stroke="rgba(255,255,255,0.12)"/>
+  <text x="180" y="290" fill="#C4B5FD" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="6">QUITIWEB · GUÍA PRÁCTICA</text>
+  <text x="180" y="390" fill="white" font-family="Inter, Arial, sans-serif" font-size="72" font-weight="800">Planes tech para niños</text>
+  <text x="180" y="470" fill="white" font-family="Inter, Arial, sans-serif" font-size="72" font-weight="800">en Málaga, Córdoba y cerca</text>
+  <text x="180" y="560" fill="#D1D5DB" font-family="Inter, Arial, sans-serif" font-size="32">Robótica · programación · videojuegos · espacio · ciencia</text>
+  <text x="180" y="620" fill="#9CA3AF" font-family="Inter, Arial, sans-serif" font-size="28">Selección inicial pensada para un peque de 7 años</text>
+  <g opacity="0.95">
+    <rect x="1080" y="360" width="220" height="220" rx="26" fill="#0F172A" stroke="#22D3EE" stroke-opacity="0.4"/>
+    <text x="1128" y="480" fill="#22D3EE" font-family="Inter, Arial, sans-serif" font-size="92">🤖</text>
+    <rect x="1240" y="280" width="170" height="170" rx="26" fill="#111827" stroke="#F472B6" stroke-opacity="0.45"/>
+    <text x="1283" y="380" fill="#F9A8D4" font-family="Inter, Arial, sans-serif" font-size="72">🚀</text>
+    <rect x="1260" y="500" width="120" height="120" rx="22" fill="#111827" stroke="#A78BFA" stroke-opacity="0.45"/>
+    <text x="1290" y="575" fill="#C4B5FD" font-family="Inter, Arial, sans-serif" font-size="54">🎮</text>
+  </g>
+  <defs>
+    <linearGradient id="panel" x1="120" y1="150" x2="1480" y2="750" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111827" stop-opacity="0.94"/>
+      <stop offset="1" stop-color="#0F172A" stop-opacity="0.88"/>
+    </linearGradient>
+  </defs>
+</svg>
