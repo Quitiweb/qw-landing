@@ -7,9 +7,24 @@ import MierdificacionIA from '@/pages/blog/posts/MierdificacionIA';
 import RobotsHumanoides from '@/pages/blog/posts/RobotsHumanoides';
 import Snails from '@/pages/blog/posts/Snails';
 import HugoTecnologiaAndalucia from '@/pages/blog/posts/HugoTecnologiaAndalucia';
+import CernNuevaFisica from '@/pages/blog/posts/CernNuevaFisica';
 
 // Metadata de los posts para el carrusel y listados
 export const postsMetadata = [
+  {
+    id: 7,
+    slug: 'cern-grieta-modelo-estandar',
+    title: 'Último experimento del CERN: una grieta en el modelo estándar',
+    excerpt: 'El LHCb detecta una anomalía en la desintegración de mesones B que podría apuntar a nueva física más allá del modelo estándar, aunque aún falta confirmación definitiva.',
+    date: '2026-04-28',
+    readTime: '5 min',
+    category: 'Ciencia',
+    image: '/blog/cern-grieta-modelo-estandar.svg',
+    author: 'Quitiweb',
+    tags: ['CERN', 'Física', 'Modelo estándar', 'LHCb'],
+    featured: true,
+    component: CernNuevaFisica,
+  },
   {
     id: 6,
     slug: 'hugo-tecnologia-andalucia',

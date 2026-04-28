@@ -1,0 +1,44 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#120A2A"/>
+      <stop offset="0.55" stop-color="#23114A"/>
+      <stop offset="1" stop-color="#3B0F58"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(250 180) rotate(37) scale(280 220)">
+      <stop stop-color="#7C3AED" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="#7C3AED" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(930 430) rotate(37) scale(320 240)">
+      <stop stop-color="#06B6D4" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#06B6D4" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow1)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+
+  <g opacity="0.3" stroke="#C084FC">
+    <circle cx="600" cy="315" r="170"/>
+    <circle cx="600" cy="315" r="120"/>
+    <circle cx="600" cy="315" r="70"/>
+    <path d="M350 315H850"/>
+    <path d="M600 65V565"/>
+  </g>
+
+  <circle cx="600" cy="315" r="12" fill="#F8FAFC"/>
+  <circle cx="720" cy="250" r="10" fill="#22D3EE"/>
+  <circle cx="470" cy="390" r="10" fill="#F472B6"/>
+  <circle cx="600" cy="145" r="8" fill="#A78BFA"/>
+
+  <path d="M535 280C575 255 635 255 675 280" stroke="#F8FAFC" stroke-width="4" stroke-linecap="round" opacity="0.85"/>
+  <path d="M530 350C570 380 640 380 680 350" stroke="#F8FAFC" stroke-width="4" stroke-linecap="round" opacity="0.85"/>
+
+  <text x="90" y="445" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="700">
+    CERN: una grieta en el modelo estándar
+  </text>
+  <text x="92" y="500" fill="#D8B4FE" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="500">
+    Una anomalía en los mesones B apunta a posible física nueva
+  </text>
+</svg>
