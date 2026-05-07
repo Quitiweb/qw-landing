@@ -1,0 +1,54 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="160" y1="80" x2="1440" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#130A37"/>
+      <stop offset="1" stop-color="#050417"/>
+    </linearGradient>
+    <linearGradient id="glow1" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#A855F7"/>
+      <stop offset="1" stop-color="#EC4899"/>
+    </linearGradient>
+    <linearGradient id="glow2" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#22D3EE"/>
+      <stop offset="1" stop-color="#A855F7"/>
+    </linearGradient>
+    <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="60"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" rx="32" fill="url(#bg)"/>
+  <circle cx="280" cy="180" r="150" fill="#A855F7" fill-opacity="0.18" filter="url(#blur)"/>
+  <circle cx="1330" cy="190" r="170" fill="#22D3EE" fill-opacity="0.12" filter="url(#blur)"/>
+  <circle cx="1220" cy="700" r="190" fill="#EC4899" fill-opacity="0.13" filter="url(#blur)"/>
+
+  <rect x="110" y="120" width="1380" height="660" rx="28" fill="white" fill-opacity="0.03" stroke="white" stroke-opacity="0.08"/>
+
+  <g opacity="0.9">
+    <rect x="190" y="230" width="460" height="260" rx="28" fill="#0F1025" stroke="#8B5CF6" stroke-opacity="0.45" stroke-width="2"/>
+    <rect x="230" y="270" width="170" height="26" rx="13" fill="#A855F7" fill-opacity="0.18"/>
+    <rect x="230" y="324" width="210" height="16" rx="8" fill="white" fill-opacity="0.88"/>
+    <rect x="230" y="354" width="280" height="16" rx="8" fill="white" fill-opacity="0.55"/>
+    <rect x="230" y="384" width="240" height="16" rx="8" fill="white" fill-opacity="0.55"/>
+    <rect x="230" y="430" width="150" height="34" rx="17" fill="url(#glow1)" fill-opacity="0.85"/>
+    <text x="306" y="452" text-anchor="middle" fill="white" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700">Suscripción IA</text>
+  </g>
+
+  <g opacity="0.95">
+    <path d="M760 360C850 360 905 290 1002 290C1128 290 1156 430 1260 430" stroke="url(#glow2)" stroke-width="20" stroke-linecap="round"/>
+    <circle cx="760" cy="360" r="20" fill="#22D3EE"/>
+    <circle cx="1260" cy="430" r="20" fill="#EC4899"/>
+    <text x="1012" y="255" text-anchor="middle" fill="#C4B5FD" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">Coste real ↑</text>
+  </g>
+
+  <g>
+    <rect x="930" y="500" width="400" height="170" rx="24" fill="#0F1025" stroke="#22D3EE" stroke-opacity="0.35" stroke-width="2"/>
+    <text x="970" y="555" fill="white" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800">Copilot</text>
+    <text x="970" y="598" fill="#C4B5FD" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="600">de tarifa plana</text>
+    <text x="970" y="636" fill="#F9A8D4" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="800">a pago por uso</text>
+  </g>
+
+  <text x="190" y="640" fill="white" font-family="Inter, Arial, sans-serif" font-size="74" font-weight="800">La economía de la IA</text>
+  <text x="190" y="720" fill="url(#glow1)" font-family="Inter, Arial, sans-serif" font-size="74" font-weight="800">no cuadra</text>
+  <text x="190" y="778" fill="#D1D5DB" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="500">Cuando el coste real asoma, la fiesta del “ilimitado” empieza a temblar.</text>
+</svg>

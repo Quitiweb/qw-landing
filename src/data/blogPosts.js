@@ -8,9 +8,24 @@ import RobotsHumanoides from '@/pages/blog/posts/RobotsHumanoides';
 import Snails from '@/pages/blog/posts/Snails';
 import HugoTecnologiaAndalucia from '@/pages/blog/posts/HugoTecnologiaAndalucia';
 import CernNuevaFisica from '@/pages/blog/posts/CernNuevaFisica';
+import IAEconomiaNoCuadra from '@/pages/blog/posts/IAEconomiaNoCuadra';
 
 // Metadata de los posts para el carrusel y listados
 export const postsMetadata = [
+  {
+    id: 8,
+    slug: 'economia-ia-no-cuadra',
+    title: 'La economía de la IA no cuadra (y Copilot lo acaba de admitir)',
+    excerpt: 'Resumen claro del análisis de Ed Zitron sobre por qué las suscripciones de IA no salen y por qué el giro de GitHub Copilot al pago por uso puede ser solo el principio.',
+    date: '2026-05-07',
+    readTime: '6 min',
+    category: 'Inteligencia Artificial',
+    image: '/blog/economia-ia-no-cuadra.svg',
+    author: 'Quitiweb',
+    tags: ['IA', 'Copilot', 'Economía', 'SaaS'],
+    featured: true,
+    component: IAEconomiaNoCuadra,
+  },
   {
     id: 7,
     slug: 'cern-grieta-modelo-estandar',
