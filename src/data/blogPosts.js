@@ -9,9 +9,24 @@ import Snails from '@/pages/blog/posts/Snails';
 import HugoTecnologiaAndalucia from '@/pages/blog/posts/HugoTecnologiaAndalucia';
 import CernNuevaFisica from '@/pages/blog/posts/CernNuevaFisica';
 import IAEconomiaNoCuadra from '@/pages/blog/posts/IAEconomiaNoCuadra';
+import TarifaLuzPVPC from '@/pages/blog/posts/TarifaLuzPVPC';
 
 // Metadata de los posts para el carrusel y listados
 export const postsMetadata = [
+  {
+    id: 9,
+    slug: 'bruselas-tarifa-regulada-luz-espana',
+    title: 'Bruselas presiona para acabar con la tarifa regulada de la luz en España',
+    excerpt: 'Resumen en español de la presión de la Comisión Europea sobre la PVPC, el posible impacto en la factura y por qué el Gobierno no parece dispuesto a mover ficha de golpe.',
+    date: '2026-05-11',
+    readTime: '5 min',
+    category: 'Energía',
+    image: '/blog/bruselas-tarifa-regulada-luz-espana.svg',
+    author: 'Quitiweb',
+    tags: ['Energía', 'España', 'PVPC', 'UE'],
+    featured: true,
+    component: TarifaLuzPVPC,
+  },
   {
     id: 8,
     slug: 'economia-ia-no-cuadra',

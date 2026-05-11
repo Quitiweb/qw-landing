@@ -1,0 +1,33 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" rx="32" fill="#050417"/>
+  <rect x="40" y="40" width="1120" height="550" rx="28" fill="url(#bg)"/>
+  <circle cx="975" cy="155" r="140" fill="#A855F7" fill-opacity="0.18"/>
+  <circle cx="1080" cy="515" r="180" fill="#EC4899" fill-opacity="0.12"/>
+  <circle cx="160" cy="120" r="110" fill="#22D3EE" fill-opacity="0.12"/>
+  <rect x="86" y="92" width="190" height="42" rx="21" fill="#A855F7" fill-opacity="0.18" stroke="#C084FC" stroke-opacity="0.5"/>
+  <text x="112" y="119" fill="#E9D5FF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">ENERGÍA · ESPAÑA</text>
+  <text x="86" y="222" fill="white" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="800">
+    <tspan x="86" dy="0">Bruselas presiona</tspan>
+    <tspan x="86" dy="74">para acabar con la</tspan>
+    <tspan x="86" dy="74">tarifa regulada</tspan>
+    <tspan x="86" dy="74">de la luz</tspan>
+  </text>
+  <text x="89" y="524" fill="#D1D5DB" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="500">
+    <tspan x="89" dy="0">La UE pide avanzar hacia contratos de mercado.</tspan>
+    <tspan x="89" dy="42">En juego: la PVPC, ocho millones de hogares y la factura.</tspan>
+  </text>
+  <g opacity="0.95">
+    <rect x="842" y="198" width="200" height="250" rx="26" fill="#0F172A" stroke="#A855F7" stroke-opacity="0.45"/>
+    <path d="M941.5 246C899 246 864 280.5 864 323C864 385.5 941.5 430 941.5 430C941.5 430 1019 385.5 1019 323C1019 280.5 984.5 246 941.5 246Z" fill="#FBBF24"/>
+    <path d="M931 302H952L938 343H965L921 400L932 351H910L931 302Z" fill="#7C2D12"/>
+    <rect x="877" y="469" width="128" height="36" rx="18" fill="#A855F7" fill-opacity="0.2"/>
+    <text x="907" y="493" fill="#F5D0FE" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">PVPC</text>
+  </g>
+  <defs>
+    <linearGradient id="bg" x1="64" y1="56" x2="1130" y2="590" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1E1B4B"/>
+      <stop offset="0.45" stop-color="#0F172A"/>
+      <stop offset="1" stop-color="#3B0764"/>
+    </linearGradient>
+  </defs>
+</svg>
