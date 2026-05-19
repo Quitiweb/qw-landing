@@ -1,0 +1,33 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" rx="32" fill="#050417"/>
+  <rect x="40" y="40" width="1120" height="550" rx="28" fill="url(#bg)"/>
+  <circle cx="960" cy="140" r="120" fill="#F472B6" fill-opacity="0.18"/>
+  <circle cx="210" cy="500" r="150" fill="#22D3EE" fill-opacity="0.14"/>
+  <rect x="86" y="86" width="410" height="150" rx="24" fill="#120E2C" stroke="#C084FC" stroke-opacity="0.35"/>
+  <text x="118" y="154" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="800">Hasta 21.400 €</text>
+  <text x="118" y="197" fill="#D8B4FE" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600">pero no como te lo están contando</text>
+
+  <text x="86" y="310" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="800">Ayudas reales para reforma</text>
+  <text x="86" y="372" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="800">de cocina o baño</text>
+  <text x="86" y="428" fill="#C4B5FD" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="500">solo si la obra mejora la eficiencia energética</text>
+
+  <rect x="760" y="248" width="300" height="220" rx="28" fill="#120E2C" stroke="#22D3EE" stroke-opacity="0.35"/>
+  <rect x="804" y="292" width="108" height="96" rx="14" fill="#1F163D" stroke="#7DD3FC" stroke-width="3"/>
+  <rect x="820" y="308" width="28" height="64" rx="8" fill="#A78BFA"/>
+  <rect x="868" y="308" width="28" height="64" rx="8" fill="#A78BFA"/>
+  <rect x="936" y="292" width="76" height="120" rx="18" fill="#1F163D" stroke="#F9A8D4" stroke-width="3"/>
+  <circle cx="974" cy="328" r="18" fill="#F9A8D4" fill-opacity="0.3" stroke="#F9A8D4" stroke-width="3"/>
+  <path d="M774 502H1062" stroke="#A78BFA" stroke-width="6" stroke-linecap="round"/>
+
+  <rect x="756" y="106" width="182" height="82" rx="20" fill="#111827" stroke="#34D399" stroke-opacity="0.5"/>
+  <text x="791" y="145" fill="#86EFAC" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="800">40% / 3.000€</text>
+  <text x="790" y="172" fill="#D1FAE5" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600">vivienda individual</text>
+
+  <defs>
+    <linearGradient id="bg" x1="40" y1="40" x2="1160" y2="590" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B0920"/>
+      <stop offset="0.5" stop-color="#171033"/>
+      <stop offset="1" stop-color="#0E172F"/>
+    </linearGradient>
+  </defs>
+</svg>

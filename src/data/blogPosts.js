@@ -10,9 +10,39 @@ import HugoTecnologiaAndalucia from '@/pages/blog/posts/HugoTecnologiaAndalucia'
 import CernNuevaFisica from '@/pages/blog/posts/CernNuevaFisica';
 import IAEconomiaNoCuadra from '@/pages/blog/posts/IAEconomiaNoCuadra';
 import TarifaLuzPVPC from '@/pages/blog/posts/TarifaLuzPVPC';
+import MalagaCapitalIADES from '@/pages/blog/posts/MalagaCapitalIADES';
+import AyudasReformaCocinaBano from '@/pages/blog/posts/AyudasReformaCocinaBano';
 
 // Metadata de los posts para el carrusel y listados
 export const postsMetadata = [
+  {
+    id: 11,
+    slug: 'ayudas-reformar-cocina-bano-eficiencia-energetica',
+    title: 'Ayudas para reformar cocina o baño y eficiencia energética: qué hay de verdad tras los 21.400 €',
+    excerpt: 'La cifra existe, pero no como la están vendiendo. Guía completa con ayudas reales, requisitos, plazos y pasos para solicitar subvenciones o deducciones por rehabilitación energética.',
+    date: '2026-05-20',
+    readTime: '8 min',
+    category: 'Vivienda',
+    image: '/blog/ayudas-reformar-cocina-bano-eficiencia-energetica.svg',
+    author: 'Quitiweb',
+    tags: ['Vivienda', 'Reformas', 'Eficiencia energética', 'Ayudas', 'IRPF'],
+    featured: true,
+    component: AyudasReformaCocinaBano,
+  },
+  {
+    id: 10,
+    slug: 'malaga-capital-ia-des-2026',
+    title: 'Málaga vuelve a venderse como capital de la IA con el DES 2026',
+    excerpt: 'Resumen claro de la décima edición del Digital Enterprise Show en Málaga y de lo que realmente dice este evento sobre el papel de la ciudad en la economía de la IA.',
+    date: '2026-05-15',
+    readTime: '5 min',
+    category: 'Málaga tech',
+    image: '/blog/malaga-capital-ia-des-2026.svg',
+    author: 'Quitiweb',
+    tags: ['Málaga', 'IA', 'DES', 'Eventos', 'Tecnología'],
+    featured: true,
+    component: MalagaCapitalIADES,
+  },
   {
     id: 9,
     slug: 'bruselas-tarifa-regulada-luz-espana',
