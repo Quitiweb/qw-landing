@@ -1,0 +1,46 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="90" y1="50" x2="1110" y2="580" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#120826"/>
+      <stop offset="1" stop-color="#071A34"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="240" y1="180" x2="970" y2="470" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A855F7"/>
+      <stop offset="0.5" stop-color="#EC4899"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" rx="36" fill="url(#bg)"/>
+  <circle cx="1015" cy="128" r="118" fill="#A855F7" fill-opacity="0.14"/>
+  <circle cx="205" cy="500" r="146" fill="#22D3EE" fill-opacity="0.1"/>
+  <rect x="72" y="64" width="1056" height="500" rx="30" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.08"/>
+
+  <text x="118" y="136" fill="#C084FC" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="700">QUITIWEB / BLOG</text>
+  <text x="118" y="225" fill="white" font-family="Inter, Arial, sans-serif" font-size="62" font-weight="800">Claude como panel</text>
+  <text x="118" y="298" fill="white" font-family="Inter, Arial, sans-serif" font-size="62" font-weight="800">de control de tu pyme</text>
+  <text x="118" y="372" fill="#E9D5FF" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700">Una pestaña · varias herramientas · aprobación humana</text>
+
+  <rect x="745" y="188" width="255" height="170" rx="22" fill="#0F172A" fill-opacity="0.72" stroke="#FFFFFF" stroke-opacity="0.12"/>
+  <rect x="771" y="216" width="202" height="18" rx="9" fill="#FFFFFF" fill-opacity="0.09"/>
+  <rect x="771" y="250" width="162" height="18" rx="9" fill="#FFFFFF" fill-opacity="0.09"/>
+  <rect x="771" y="284" width="178" height="18" rx="9" fill="#FFFFFF" fill-opacity="0.09"/>
+  <rect x="771" y="318" width="120" height="18" rx="9" fill="#A855F7" fill-opacity="0.45"/>
+
+  <rect x="638" y="144" width="138" height="72" rx="18" fill="#111827" stroke="#A855F7" stroke-opacity="0.55"/>
+  <text x="669" y="188" fill="#F5D0FE" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">Claude</text>
+
+  <rect x="980" y="128" width="112" height="56" rx="16" fill="#111827" stroke="#22D3EE" stroke-opacity="0.5"/>
+  <text x="1004" y="163" fill="#CFFAFE" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="700">Canva</text>
+
+  <rect x="1004" y="374" width="88" height="56" rx="16" fill="#111827" stroke="#EC4899" stroke-opacity="0.55"/>
+  <text x="1023" y="409" fill="#FBCFE8" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700">CRM</text>
+
+  <rect x="617" y="392" width="130" height="56" rx="16" fill="#111827" stroke="#A855F7" stroke-opacity="0.45"/>
+  <text x="639" y="427" fill="#E9D5FF" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700">QuickBooks</text>
+
+  <path d="M777 180C846 169 908 160 980 156" stroke="url(#accent)" stroke-width="8" stroke-linecap="round"/>
+  <path d="M769 198C829 242 901 300 1004 401" stroke="url(#accent)" stroke-width="8" stroke-linecap="round"/>
+  <path d="M690 215C683 283 682 329 681 393" stroke="url(#accent)" stroke-width="8" stroke-linecap="round"/>
+
+  <text x="118" y="468" fill="#D1D5DB" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="500">Anthropic quiere dejar de ser un chat y convertirse en la capa operativa del negocio</text>
+</svg>

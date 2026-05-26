@@ -12,9 +12,24 @@ import IAEconomiaNoCuadra from '@/pages/blog/posts/IAEconomiaNoCuadra';
 import TarifaLuzPVPC from '@/pages/blog/posts/TarifaLuzPVPC';
 import MalagaCapitalIADES from '@/pages/blog/posts/MalagaCapitalIADES';
 import AyudasReformaCocinaBano from '@/pages/blog/posts/AyudasReformaCocinaBano';
+import ClaudeUnificaPymes from '@/pages/blog/posts/ClaudeUnificaPymes';
 
 // Metadata de los posts para el carrusel y listados
 export const postsMetadata = [
+  {
+    id: 12,
+    slug: 'claude-panel-control-pyme',
+    title: 'Claude quiere convertirse en el panel de control de tu pyme',
+    excerpt: 'Resumen claro del nuevo paquete de Claude para pequeñas empresas: conectores, aprobaciones humanas y la promesa de gestionar operaciones desde una sola pestaña.',
+    date: '2026-05-26',
+    readTime: '5 min',
+    category: 'Inteligencia Artificial',
+    image: '/blog/claude-panel-control-pyme.svg',
+    author: 'Quitiweb',
+    tags: ['IA', 'Claude', 'Pymes', 'Automatización', 'Anthropic'],
+    featured: true,
+    component: ClaudeUnificaPymes,
+  },
   {
     id: 11,
     slug: 'ayudas-reformar-cocina-bano-eficiencia-energetica',
