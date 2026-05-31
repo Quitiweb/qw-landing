@@ -13,9 +13,24 @@ import TarifaLuzPVPC from '@/pages/blog/posts/TarifaLuzPVPC';
 import MalagaCapitalIADES from '@/pages/blog/posts/MalagaCapitalIADES';
 import AyudasReformaCocinaBano from '@/pages/blog/posts/AyudasReformaCocinaBano';
 import ClaudeUnificaPymes from '@/pages/blog/posts/ClaudeUnificaPymes';
+import HuxleyAutoconocimiento from '@/pages/blog/posts/HuxleyAutoconocimiento';
 
 // Metadata de los posts para el carrusel y listados
 export const postsMetadata = [
+  {
+    id: 13,
+    slug: 'aldous-huxley-autoconocimiento-ilusion',
+    title: 'Aldous Huxley y la verdad incómoda del autoconocimiento',
+    excerpt: 'Una lectura a fondo de la frase de Huxley sobre el dolor de conocerse, el refugio de la ilusión y la distancia brutal entre saber algo y vivir de acuerdo con ello.',
+    date: '2026-05-31',
+    readTime: '8 min',
+    category: 'Psicología',
+    image: '/blog/aldous-huxley-autoconocimiento-ilusion.svg',
+    author: 'Quitiweb',
+    tags: ['Aldous Huxley', 'Psicología', 'Autoconocimiento', 'Filosofía', 'Ensayo'],
+    featured: true,
+    component: HuxleyAutoconocimiento,
+  },
   {
     id: 12,
     slug: 'claude-panel-control-pyme',

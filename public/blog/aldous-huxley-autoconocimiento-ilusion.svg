@@ -1,0 +1,43 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="90" y1="60" x2="1110" y2="570" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#10071F"/>
+      <stop offset="1" stop-color="#0A1D37"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="190" y1="160" x2="970" y2="470" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A855F7"/>
+      <stop offset="0.55" stop-color="#EC4899"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" rx="36" fill="url(#bg)"/>
+  <circle cx="1005" cy="126" r="120" fill="#A855F7" fill-opacity="0.12"/>
+  <circle cx="188" cy="505" r="150" fill="#22D3EE" fill-opacity="0.08"/>
+  <rect x="72" y="64" width="1056" height="500" rx="30" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.08"/>
+
+  <text x="118" y="136" fill="#C084FC" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="700">QUITIWEB / BLOG</text>
+  <text x="118" y="224" fill="white" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="800">Huxley y la verdad</text>
+  <text x="118" y="294" fill="white" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="800">incómoda de mirarse</text>
+  <text x="118" y="366" fill="#E9D5FF" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700">Autoconocimiento · ilusión · voluntad</text>
+
+  <rect x="720" y="175" width="280" height="196" rx="26" fill="#0F172A" fill-opacity="0.72" stroke="#FFFFFF" stroke-opacity="0.12"/>
+  <path d="M785 211C810 193 839 184 873 184C925 184 969 223 969 274C969 324 926 364 872 364C818 364 776 326 776 276C776 254 782 232 795 214" stroke="url(#accent)" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="872" cy="274" r="52" fill="#111827" stroke="#FFFFFF" stroke-opacity="0.15"/>
+  <path d="M846 274C846 257.431 859.431 244 876 244V244" stroke="#F5D0FE" stroke-width="8" stroke-linecap="round"/>
+  <path d="M876 304C892.569 304 906 290.569 906 274V274" stroke="#CFFAFE" stroke-width="8" stroke-linecap="round"/>
+
+  <rect x="644" y="137" width="148" height="64" rx="18" fill="#111827" stroke="#A855F7" stroke-opacity="0.55"/>
+  <text x="676" y="177" fill="#F5D0FE" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">Ilusión</text>
+
+  <rect x="963" y="130" width="118" height="60" rx="16" fill="#111827" stroke="#22D3EE" stroke-opacity="0.55"/>
+  <text x="985" y="168" fill="#CFFAFE" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">Verdad</text>
+
+  <rect x="632" y="386" width="154" height="60" rx="16" fill="#111827" stroke="#EC4899" stroke-opacity="0.55"/>
+  <text x="660" y="423" fill="#FBCFE8" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">Voluntad</text>
+
+  <path d="M792 191C855 176 912 168 963 160" stroke="url(#accent)" stroke-width="8" stroke-linecap="round"/>
+  <path d="M789 203C824 239 842 244 872 244" stroke="url(#accent)" stroke-width="8" stroke-linecap="round"/>
+  <path d="M749 393C792 350 817 329 844 308" stroke="url(#accent)" stroke-width="8" stroke-linecap="round"/>
+
+  <text x="118" y="468" fill="#D1D5DB" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="500">Saber es fácil; vivir según lo que sabes de ti ya no tanto</text>
+</svg>
