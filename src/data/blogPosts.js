@@ -14,9 +14,24 @@ import MalagaCapitalIADES from '@/pages/blog/posts/MalagaCapitalIADES';
 import AyudasReformaCocinaBano from '@/pages/blog/posts/AyudasReformaCocinaBano';
 import ClaudeUnificaPymes from '@/pages/blog/posts/ClaudeUnificaPymes';
 import HuxleyAutoconocimiento from '@/pages/blog/posts/HuxleyAutoconocimiento';
+import EscribirManoMemoria from '@/pages/blog/posts/EscribirManoMemoria';
 
 // Metadata de los posts para el carrusel y listados
 export const postsMetadata = [
+  {
+    id: 14,
+    slug: 'escribir-a-mano-memoria-aprendizaje',
+    title: 'Si quieres que algo se te quede, escríbelo a mano',
+    excerpt: 'Qué dice de verdad el estudio reciente sobre escritura a mano y memoria, por qué ayuda a fijar ideas y cuándo sigue teniendo ventaja frente al teclado.',
+    date: '2026-06-02',
+    readTime: '6 min',
+    category: 'Productividad',
+    image: '/blog/escribir-a-mano-memoria-aprendizaje.svg',
+    author: 'Quitiweb',
+    tags: ['Memoria', 'Aprendizaje', 'Productividad', 'Neurociencia', 'Escritura'],
+    featured: true,
+    component: EscribirManoMemoria,
+  },
   {
     id: 13,
     slug: 'aldous-huxley-autoconocimiento-ilusion',
