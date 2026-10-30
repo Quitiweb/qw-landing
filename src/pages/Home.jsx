@@ -4,6 +4,7 @@ import Hero from '@/components/Hero';
 import Services from '@/components/Services';
 import ProjectsCarousel from '@/components/ProjectsCarousel';
 import Blog from '@/components/Blog';
+import Tablero from '@/components/Tablero';
 import Newsletter from '@/components/Newsletter';
 import Footer from '@/components/Footer';
 
@@ -50,6 +51,7 @@ function Home() {
       <Services />
       <ProjectsCarousel />
       <Blog />
+      <Tablero />
       <Newsletter />
       <Footer />
     </>

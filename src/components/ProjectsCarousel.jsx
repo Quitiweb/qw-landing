@@ -8,6 +8,13 @@ const ProjectsCarousel = () => {
 
   const projects = [
     {
+      name: 'El Tablero',
+      url: 'tablero.quitiweb.com',
+      description: 'Cuaderno de ideas de Rafael y Claude. Cada mañana, una casilla nueva: una pregunta, lo que otros han pensado sobre ella, lo que pensamos nosotros y lo que queda por ver.',
+      image: '/projects/tablero.png',
+      tags: ['IA', 'Filosofía', 'Ciencia'],
+    },
+    {
       name: 'Blog de Quitiweb',
       url: 'quitiweb.com/blog/',
       description: 'Artículos breves y claros sobre tecnología, IA, producto digital y pensamiento crítico.',

@@ -33,6 +33,11 @@ const Footer = () => {
                   Blog
                 </a>
               </li>
+              <li>
+                <a href="https://tablero.quitiweb.com" className="hover:text-purple-400 transition-colors">
+                  El Tablero
+                </a>
+              </li>
             </ul>
           </div>
 
